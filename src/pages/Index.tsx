@@ -235,7 +235,7 @@ const Index = () => {
                       </li>
                       <li className="flex items-center">
                         <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                        2 Jahre Gewährleistung
+                        10 Jahre Gewährleistung
                       </li>
                     </ul>
                   </CardContent>

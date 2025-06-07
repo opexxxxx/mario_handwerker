@@ -8,7 +8,7 @@ const Renovierung = () => {
   const experience = [
     "Über 20 Jahre Erfahrung in der Renovierung",
     "Mehr als 300 erfolgreich renovierte Objekte",
-    "Spezialisiert auf denkmalgeschützte Gebäude",
+    "Moderne und nachhaltige Renovierungslösungen",
     "Komplette Altbausanierungen mit Trockenbau"
   ];
 

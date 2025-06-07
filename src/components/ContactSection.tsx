@@ -53,10 +53,10 @@ const ContactSection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Contact Info */}
-            <div className="space-y-6">
-              <Card>
+            <div className="space-y-6 h-full flex flex-col">
+              <Card className="flex-grow">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Phone className="mr-2 h-5 w-5" />
@@ -79,7 +79,7 @@ const ContactSection = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="flex-grow">
                 <CardHeader>
                   <CardTitle>Unsere Vorteile</CardTitle>
                 </CardHeader>
@@ -107,15 +107,15 @@ const ContactSection = () => {
             </div>
 
             {/* Contact Form */}
-            <Card>
+            <Card className="h-full">
               <CardHeader>
                 <CardTitle>Anfrage senden</CardTitle>
                 <CardDescription>
                   Füllen Sie das Formular aus und wir melden uns binnen 24 Stunden bei Ihnen
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+              <CardContent className="flex-grow">
+                <form onSubmit={handleSubmit} className="space-y-4 h-full flex flex-col">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name">Name *</Label>
@@ -165,7 +165,7 @@ const ContactSection = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="flex-grow">
                     <Label htmlFor="message">Nachricht *</Label>
                     <Textarea
                       id="message"
@@ -174,11 +174,11 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="Beschreiben Sie Ihr Projekt..."
-                      rows={4}
+                      className="min-h-[120px] resize-none"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button type="submit" className="w-full mt-auto" size="lg">
                     Anfrage senden
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>

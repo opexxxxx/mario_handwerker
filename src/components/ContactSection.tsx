@@ -66,7 +66,7 @@ const ContactSection = () => {
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-primary" />
-                    <span>+49 (0) 123 456 789</span>
+                    <span>+49 15171847310</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-primary" />
@@ -74,7 +74,7 @@ const ContactSection = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <span>Musterstraße 123, 12345 Musterstadt</span>
+                    <span>Musterstraße 123, 74177 Bad Friedrichshall</span>
                   </div>
                 </CardContent>
               </Card>

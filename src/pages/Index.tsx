@@ -18,6 +18,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -57,17 +58,20 @@ const Index = () => {
     {
       icon: Home,
       title: "Wohnungsbau",
-      description: "Professionelle Trockenbauarbeiten für Wohnräume, Büros und Gewerbeimmobilien"
+      description: "Professionelle Trockenbauarbeiten für Wohnräume, Büros und Gewerbeimmobilien",
+      link: "/wohnungsbau"
     },
     {
       icon: Wrench,
       title: "Renovierung",
-      description: "Modernisierung und Sanierung bestehender Räume mit modernen Trockenbautechniken"
+      description: "Modernisierung und Sanierung bestehender Räume mit modernen Trockenbautechniken",
+      link: "/renovierung"
     },
     {
       icon: Hammer,
       title: "Neugestaltung",
-      description: "Kreative Raumaufteilung und Designlösungen für optimale Raumnutzung"
+      description: "Kreative Raumaufteilung und Designlösungen für optimale Raumnutzung",
+      link: "/neugestaltung"
     }
   ];
 
@@ -104,17 +108,23 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Unsere Leistungen</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover-scale">
-                <CardHeader>
-                  <service.icon className="h-12 w-12 text-primary mb-4" />
-                  <CardTitle>{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <Link key={index} to={service.link}>
+                <Card className="hover:shadow-lg transition-all duration-300 hover-scale h-full">
+                  <CardHeader>
+                    <service.icon className="h-12 w-12 text-primary mb-4" />
+                    <CardTitle>{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base mb-4">
+                      {service.description}
+                    </CardDescription>
+                    <div className="flex items-center text-primary font-medium">
+                      Mehr erfahren
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

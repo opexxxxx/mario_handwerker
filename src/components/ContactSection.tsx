@@ -66,7 +66,7 @@ const ContactSection = () => {
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-primary" />
-                    <span>+49 15171847310</span>
+                    <span>+49 12345678</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-primary" />

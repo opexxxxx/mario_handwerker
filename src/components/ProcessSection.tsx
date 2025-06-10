@@ -7,7 +7,7 @@ const ProcessSection = () => {
       step: "1",
       title: "Beratung & Planung",
       description: "In einem ausführlichen Beratungsgespräch vor Ort analysieren wir Ihre Wünsche und Anforderungen. Gemeinsam entwickeln wir eine detaillierte Projektplanung, die alle Aspekte Ihres Vorhabens berücksichtigt. Von der ersten Idee bis zur technischen Umsetzung - wir begleiten Sie durch jeden Planungsschritt.",
-      imageUrl: "/placeholder.svg",
+      imageUrl: "/lovable-uploads/a68f6011-43d6-4833-b233-7598271d7cb5.png",
       reverse: false
     },
     {

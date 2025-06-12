@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -98,10 +97,7 @@ const Contact = () => {
             <div>
               <Card className="h-fit">
                 <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Kontaktinformationen
-                  </CardTitle>
+                  <CardTitle>Kontaktinformationen</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
@@ -110,7 +106,7 @@ const Contact = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-primary" />
-                    <span>z-103103@yandex.ru</span>
+                    <span>info@handwerker-example.de</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className="h-5 w-5 text-primary" />

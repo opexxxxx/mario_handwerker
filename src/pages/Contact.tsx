@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, CheckCircle, ArrowRight, ArrowLeft } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 
@@ -95,8 +95,8 @@ const Contact = () => {
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Contact Info */}
-            <div className="space-y-6">
-              <Card>
+            <div>
+              <Card className="h-fit">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Phone className="mr-2 h-5 w-5" />
@@ -116,32 +116,6 @@ const Contact = () => {
                     <MapPin className="h-5 w-5 text-primary" />
                     <span>Musterstraße 123, 74177 Bad Friedrichshall</span>
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Unsere Vorteile</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li className="flex items-center">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      20+ Jahre Erfahrung
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      Kostenlose Beratung
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      Festpreisgarantie
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      10 Jahre Gewährleistung
-                    </li>
-                  </ul>
                 </CardContent>
               </Card>
             </div>

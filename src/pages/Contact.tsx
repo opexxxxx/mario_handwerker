@@ -94,40 +94,40 @@ const Contact = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Contact Info - 3 separate cards */}
-            <div className="space-y-4">
-              <Card className="h-fit">
+            {/* Contact Info - 3 separate cards with equal height distribution */}
+            <div className="flex flex-col h-full">
+              <Card className="flex-1">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg flex items-center">
                     <Phone className="mr-2 h-5 w-5 text-primary" />
                     Telefon
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="pt-0 flex items-center h-full">
                   <span>+49 12345678</span>
                 </CardContent>
               </Card>
 
-              <Card className="h-fit">
+              <Card className="flex-1 mt-4">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg flex items-center">
                     <Mail className="mr-2 h-5 w-5 text-primary" />
                     E-Mail
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="pt-0 flex items-center h-full">
                   <span>info@handwerker-example.de</span>
                 </CardContent>
               </Card>
 
-              <Card className="h-fit">
+              <Card className="flex-1 mt-4">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg flex items-center">
                     <MapPin className="mr-2 h-5 w-5 text-primary" />
                     Adresse
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="pt-0 flex items-center h-full">
                   <span>Musterstraße 123, 74177 Bad Friedrichshall</span>
                 </CardContent>
               </Card>

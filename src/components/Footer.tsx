@@ -2,10 +2,6 @@
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer className="bg-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
@@ -18,12 +14,12 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-8 pt-8 border-t border-primary-foreground/20">
-            <button 
-              onClick={scrollToContact}
+            <Link
+              to="/contact"
               className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               Kontakt
-            </button>
+            </Link>
             <Link 
               to="/impressum" 
               className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -48,3 +44,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

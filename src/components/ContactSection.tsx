@@ -70,11 +70,11 @@ const ContactSection = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-primary" />
-                    <span>info@trockenbau-experte.de</span>
+                    <span>advokat710@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <span>Musterstraße 123, 74177 Bad Friedrichshall</span>
+                    <span>Spital Str. 14, 74177 Bad Friedrichshall</span>
                   </div>
                 </CardContent>
               </Card>

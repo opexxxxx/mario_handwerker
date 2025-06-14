@@ -128,7 +128,7 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0 flex items-center justify-center h-full text-center">
-                  <span>Musterstraße 123, 74177 Bad Friedrichshall</span>
+                  <span>Spital Str. 14, 74177 Bad Friedrichshall</span>
                 </CardContent>
               </Card>
             </div>

@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -22,12 +24,12 @@ const Footer = () => {
             >
               Kontakt
             </button>
-            <a 
-              href="#impressum" 
+            <Link 
+              to="/impressum" 
               className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               Impressum
-            </a>
+            </Link>
             <a 
               href="#datenschutz" 
               className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"

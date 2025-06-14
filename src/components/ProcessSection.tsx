@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 
 const ProcessSection = () => {
@@ -6,28 +7,28 @@ const ProcessSection = () => {
       step: "1",
       title: "Beratung & Planung",
       description: "In einem ausführlichen Beratungsgespräch vor Ort analysieren wir Ihre Wünsche und Anforderungen. Gemeinsam entwickeln wir eine detaillierte Projektplanung, die alle Aspekte Ihres Vorhabens berücksichtigt. Von der ersten Idee bis zur technischen Umsetzung - wir begleiten Sie durch jeden Planungsschritt.",
-      imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       reverse: false
     },
     {
       step: "2",
       title: "Materialauswahl",
       description: "Basierend auf Ihren Anforderungen und unserem Fachwissen wählen wir gemeinsam die optimalen Materialien aus. Dabei achten wir auf Qualität, Langlebigkeit und Ihr Budget. Unsere langjährigen Partnerschaften mit renommierten Herstellern ermöglichen uns, Ihnen stets beste Qualität zu fairen Preisen anzubieten.",
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1511216335778-75a7a11115d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       reverse: true
     },
     {
       step: "3",
       title: "Professionelle Ausführung",
       description: "Unser erfahrenes Handwerkerteam setzt Ihr Projekt mit höchster Präzision und Sorgfalt um. Dabei halten wir uns strikt an vereinbarte Termine und Qualitätsstandards. Durch regelmäßige Zwischenkontrollen stellen wir sicher, dass alle Arbeiten fachgerecht und nach neuesten Standards ausgeführt werden.",
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       reverse: false
     },
     {
       step: "4",
       title: "Qualitätskontrolle & Übergabe",
       description: "Nach Fertigstellung führen wir eine umfassende Qualitätskontrolle durch und nehmen gemeinsam mit Ihnen das Projekt ab. Wir erklären Ihnen alle durchgeführten Arbeiten und übergeben Ihnen alle relevanten Unterlagen. Auch nach Projektabschluss stehen wir Ihnen für Fragen und Nacharbeiten zur Verfügung.",
-      imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1580216692245-5654512135a8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       reverse: true
     }
   ];

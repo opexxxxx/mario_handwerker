@@ -12,13 +12,13 @@ const ServicesSection = () => {
     },
     {
       icon: Building,
-      title: "Stuckateur",
+      title: "Stuckarbeiten",
       description: "Kreative Stuckarbeiten und dekorative Wandgestaltung",
       gradient: "bg-gradient-to-tl from-stone-400 to-slate-600"
     },
     {
       icon: Palette,
-      title: "Maler",
+      title: "Malerarbeiten",
       description: "Hochwertige Malerarbeiten innen und außen",
       gradient: "bg-gradient-to-tl from-blue-400 to-purple-500"
     },
@@ -37,7 +37,7 @@ const ServicesSection = () => {
     {
       icon: Truck,
       title: "Transport",
-      description: "Zuverlässige Transportdienstleistungen für Ihr Projekt",
+      description: "Zuverlässige Transportdienstleistungen und Aufräumarbeiten für Ihr Projekt",
       gradient: "bg-gradient-to-tl from-green-400 to-emerald-500"
     },
     {

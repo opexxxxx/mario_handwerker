@@ -33,7 +33,7 @@ const Contact = () => {
     setIsLoading(true);
     
     const emailData = {
-      to: "z-103103@yandex.ru",
+      to: "advokat710@gmail.com",
       subject: `Neue Anfrage von ${formData.name}`,
       body: `
         Name: ${formData.name}
@@ -116,7 +116,7 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0 flex items-center justify-center h-full text-center">
-                  <span>info@handwerker-example.de</span>
+                  <span>advokat710@gmail.com</span>
                 </CardContent>
               </Card>
 

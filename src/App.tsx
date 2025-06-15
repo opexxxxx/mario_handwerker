@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +9,7 @@ import Impressum from "./pages/Impressum";
 import Wohnungsbau from "./pages/Wohnungsbau";
 import Renovierung from "./pages/Renovierung";
 import Neugestaltung from "./pages/Neugestaltung";
+import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/wohnungsbau" element={<Wohnungsbau />} />
           <Route path="/renovierung" element={<Renovierung />} />
           <Route path="/neugestaltung" element={<Neugestaltung />} />

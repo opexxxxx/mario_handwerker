@@ -26,12 +26,12 @@ const Footer = () => {
             >
               Impressum
             </Link>
-            <a 
-              href="#datenschutz" 
+            <Link 
+              to="/datenschutz"
               className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               Datenschutz
-            </a>
+            </Link>
           </div>
           
           <div className="text-center text-sm text-primary-foreground/60 mt-8">
@@ -44,4 +44,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

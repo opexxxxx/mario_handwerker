@@ -94,7 +94,7 @@ const Contact = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Contact Info - 3 separate cards with equal height distribution */}
+            {/* Contact Info - 3 separate cards with better centering */}
             <div className="flex flex-col h-full">
               <Card className="flex-1">
                 <CardHeader className="pb-4">
@@ -103,8 +103,8 @@ const Contact = () => {
                     Telefon
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0 flex items-center justify-center h-full text-center">
-                  <span>+49 15171847310</span>
+                <CardContent className="pt-0 flex items-center justify-center text-center min-h-[60px]">
+                  <span className="text-lg">+49 15171847310</span>
                 </CardContent>
               </Card>
 
@@ -115,8 +115,8 @@ const Contact = () => {
                     E-Mail
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0 flex items-center justify-center h-full text-center">
-                  <span>advokat710@gmail.com</span>
+                <CardContent className="pt-0 flex items-center justify-center text-center min-h-[60px]">
+                  <span className="text-lg">advokat710@gmail.com</span>
                 </CardContent>
               </Card>
 
@@ -127,8 +127,8 @@ const Contact = () => {
                     Adresse
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0 flex items-center justify-center h-full text-center">
-                  <span>Spital Str. 14, 74177 Bad Friedrichshall</span>
+                <CardContent className="pt-0 flex items-center justify-center text-center min-h-[60px] px-6">
+                  <span className="text-lg">Spital Str. 14, 74177 Bad Friedrichshall</span>
                 </CardContent>
               </Card>
             </div>

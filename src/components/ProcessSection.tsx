@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 
 const ProcessSection = () => {
@@ -37,9 +38,9 @@ const ProcessSection = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Unser Arbeitsprozess</h2>
         <div className="max-w-6xl mx-auto">
-          <div className="space-y-12">
+          <div className="space-y-16">
             {processSteps.map((item, index) => (
-              <div key={index} className={`flex items-center gap-8 ${item.reverse ? 'flex-row-reverse' : ''}`}>
+              <div key={index} className={`flex items-center gap-8 ${item.reverse ? 'flex-row-reverse' : ''} ${index === 0 ? 'mb-20' : ''}`}>
                 <div className="flex-1">
                   <Card className="h-full">
                     <CardContent className="p-8">

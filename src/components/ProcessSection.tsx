@@ -1,5 +1,4 @@
 
-
 import { Card, CardContent } from "@/components/ui/card";
 
 const ProcessSection = () => {
@@ -12,7 +11,7 @@ const ProcessSection = () => {
       reverse: false
     },
     {
-      step: "2",
+      step: "2", 
       title: "Materialauswahl",
       description: "Basierend auf Ihren Anforderungen und unserem Fachwissen wählen wir gemeinsam die optimalen Materialien aus. Dabei achten wir auf Qualität, Langlebigkeit und Ihr Budget. Unsere langjährigen Partnerschaften mit renommierten Herstellern ermöglichen uns, Ihnen stets beste Qualität zu fairen Preisen anzubieten.",
       imageUrl: "/lovable-uploads/e3e939d4-be7a-41b2-b287-b4a36db83582.png",
@@ -20,7 +19,7 @@ const ProcessSection = () => {
     },
     {
       step: "3",
-      title: "Professionelle Ausführung",
+      title: "Professionelle Ausführung", 
       description: "Unser erfahrenes Handwerkerteam setzt Ihr Projekt mit höchster Präzision und Sorgfalt um. Dabei halten wir uns strikt an vereinbarte Termine und Qualitätsstandards. Durch regelmäßige Zwischenkontrollen stellen wir sicher, dass alle Arbeiten fachgerecht und nach neuesten Standards ausgeführt werden.",
       imageUrl: "/lovable-uploads/bf7834ab-788b-4cd0-a626-45ba0b58ec84.png",
       reverse: false
@@ -41,7 +40,7 @@ const ProcessSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-30">
             {processSteps.map((item, index) => (
-              <div key={index} className={`flex items-center gap-8 ${item.reverse ? 'flex-row-reverse' : ''} ${index === 0 ? 'mb-20' : ''}`}>
+              <div key={index} className={`flex items-center gap-8 ${item.reverse ? 'flex-row-reverse' : ''}`}>
                 <div className="flex-1">
                   <Card className="h-full">
                     <CardContent className="p-8">
@@ -74,4 +73,3 @@ const ProcessSection = () => {
 };
 
 export default ProcessSection;
-

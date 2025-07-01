@@ -16,6 +16,7 @@ const ContactSection = () => {
     project: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -26,20 +27,57 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast({
-      title: "Anfrage gesendet!",
-      description: "Wir werden uns bald bei Ihnen melden.",
-    });
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      project: "",
-      message: ""
-    });
+    setIsLoading(true);
+    
+    const webhookData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      project: formData.project,
+      message: formData.message,
+      contact_phone: "+49 15171847310",
+      contact_email: "advokat710@gmail.com",
+      contact_address: "Spital Str. 14, 74177 Bad Friedrichshall",
+      timestamp: new Date().toISOString(),
+      source: "Homepage Kontaktformular"
+    };
+
+    try {
+      const response = await fetch("https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(webhookData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Anfrage gesendet!",
+          description: "Wir werden uns bald bei Ihnen melden.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          project: "",
+          message: ""
+        });
+      } else {
+        throw new Error("Webhook request failed");
+      }
+    } catch (error) {
+      console.error("Error sending webhook:", error);
+      toast({
+        title: "Fehler",
+        description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -178,8 +216,8 @@ const ContactSection = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full mt-auto" size="lg">
-                    Anfrage senden
+                  <Button type="submit" className="w-full mt-auto" size="lg" disabled={isLoading}>
+                    {isLoading ? "Wird gesendet..." : "Anfrage senden"}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </form>

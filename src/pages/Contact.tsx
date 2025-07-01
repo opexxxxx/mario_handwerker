@@ -32,42 +32,49 @@ const Contact = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    const emailData = {
-      to: "advokat710@gmail.com",
-      subject: `Neue Anfrage von ${formData.name}`,
-      body: `
-        Name: ${formData.name}
-        E-Mail: ${formData.email}
-        Telefon: ${formData.phone}
-        Projektart: ${formData.project}
-        
-        Nachricht:
-        ${formData.message}
-      `
+    const webhookData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      project: formData.project,
+      message: formData.message,
+      contact_phone: "+49 15171847310",
+      contact_email: "advokat710@gmail.com",
+      contact_address: "Spital Str. 14, 74177 Bad Friedrichshall",
+      timestamp: new Date().toISOString(),
+      source: "Kontakt-Seite"
     };
 
     try {
-      // Da wir keine Backend-Integration haben, verwenden wir mailto:
-      const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(emailData.body)}`;
-      window.location.href = mailtoLink;
-      
-      toast({
-        title: "E-Mail-Client geöffnet",
-        description: "Bitte senden Sie die E-Mail über Ihren E-Mail-Client.",
+      const response = await fetch("https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(webhookData),
       });
-      
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        project: "",
-        message: ""
-      });
+
+      if (response.ok) {
+        toast({
+          title: "Anfrage erfolgreich gesendet!",
+          description: "Wir werden uns binnen 24 Stunden bei Ihnen melden.",
+        });
+        
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          project: "",
+          message: ""
+        });
+      } else {
+        throw new Error("Webhook request failed");
+      }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error sending webhook:", error);
       toast({
         title: "Fehler",
-        description: "Es gab ein Problem beim Öffnen des E-Mail-Clients.",
+        description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
         variant: "destructive",
       });
     } finally {

@@ -39,7 +39,7 @@ const ProcessSection = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Unser Arbeitsprozess</h2>
         <div className="max-w-6xl mx-auto">
-          <div className="space-y-20">
+          <div className="space-y-30">
             {processSteps.map((item, index) => (
               <div key={index} className={`flex items-center gap-8 ${item.reverse ? 'flex-row-reverse' : ''} ${index === 0 ? 'mb-20' : ''}`}>
                 <div className="flex-1">

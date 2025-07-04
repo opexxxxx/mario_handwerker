@@ -34,12 +34,20 @@ const Datenschutz = () => (
               <h2 className="text-2xl font-semibold mb-4">3. Kontaktformular</h2>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <p>
-                  Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular (Name, E-Mail-Adresse, Telefonnummer, Nachricht) ausschließlich zum Zweck der Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter und löschen sie, sobald sie für die Bearbeitung nicht mehr benötigt werden.
+                  Wenn Sie uns per Formular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten (z. B. Telefonnummer, E-Mail-Adresse, Projektbeschreibung) zum Zweck der Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert und per E-Mail übertragen.
                 </p>
-                <ul className="list-disc pl-5 mt-2">
-                  <li>Eine Speicherung erfolgt nur, wenn Sie die Daten eingeben und absenden.</li>
-                  <li>Die Übermittlung erfolgt nicht verschlüsselt, bitte geben Sie keine sensiblen Daten ein.</li>
-                </ul>
+                <p className="mt-4">
+                  Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist.
+                </p>
+                <p className="mt-4">
+                  In allen übrigen Fällen erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO – aus unserem berechtigten Interesse an der effizienten Bearbeitung von Anfragen – oder auf Art. 6 Abs. 1 lit. a DSGVO, sofern Ihre Einwilligung eingeholt wurde.
+                </p>
+                <p className="mt-4">
+                  Die Daten werden nicht ohne Ihre Einwilligung weitergegeben.
+                </p>
+                <p className="mt-4">
+                  Die Übermittlung der Daten per E-Mail erfolgt unverschlüsselt. Bitte übermitteln Sie keine sensiblen Informationen über dieses Formular.
+                </p>
               </div>
             </section>
             <section>
@@ -49,7 +57,18 @@ const Datenschutz = () => (
               </div>
             </section>
             <section>
-              <h2 className="text-2xl font-semibold mb-4">5. Ihre Rechte</h2>
+              <h2 className="text-2xl font-semibold mb-4">5. SSL-/TLS-Verschlüsselung</h2>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <p>
+                  Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+                </p>
+                <p className="mt-4">
+                  Wenn die SSL-/TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
+                </p>
+              </div>
+            </section>
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">6. Ihre Rechte</h2>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <ul className="list-disc pl-5">
                   <li>Auskunft über Ihre bei uns gespeicherten Daten</li>
@@ -64,7 +83,7 @@ const Datenschutz = () => (
               </div>
             </section>
             <section>
-              <h2 className="text-2xl font-semibold mb-4">6. Verantwortlicher</h2>
+              <h2 className="text-2xl font-semibold mb-4">7. Verantwortlicher</h2>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                  <p>
                    <strong>Mario Blazevic</strong><br />
@@ -76,7 +95,7 @@ const Datenschutz = () => (
               </div>
             </section>
             <section>
-              <h2 className="text-2xl font-semibold mb-4">7. Aktualisierung der Datenschutzerklärung</h2>
+              <h2 className="text-2xl font-semibold mb-4">8. Aktualisierung der Datenschutzerklärung</h2>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <p>
                   Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht.

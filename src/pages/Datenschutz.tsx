@@ -66,13 +66,13 @@ const Datenschutz = () => (
             <section>
               <h2 className="text-2xl font-semibold mb-4">6. Verantwortlicher</h2>
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <p>
-                  <strong>Allaround-Handwerker</strong><br />
-                  Spital Str. 14<br />
-                  74177 Bad Friedrichshall<br />
-                  E-Mail: <a href="mailto:advokat710@gmail.com">advokat710@gmail.com</a><br />
-                  Telefon: +49 15171847310
-                </p>
+                 <p>
+                   <strong>Mario Blazevic</strong><br />
+                   Spital Str. 14<br />
+                   74177 Bad Friedrichshall<br />
+                   E-Mail: <a href="mailto:info@mario-handwerker.com">info@mario-handwerker.com</a><br />
+                   Telefon: +49 15171847310
+                 </p>
               </div>
             </section>
             <section>

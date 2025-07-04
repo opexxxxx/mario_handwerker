@@ -38,7 +38,7 @@ const ContactSection = () => {
       project: formData.project,
       message: formData.message,
       contact_phone: "+49 15171847310",
-      contact_email: "advokat710@gmail.com",
+      contact_email: "info@mario-handwerker.com",
       contact_address: "Spital Str. 14, 74177 Bad Friedrichshall",
       timestamp: new Date().toISOString(),
       source: "Homepage Kontaktformular"
@@ -108,7 +108,7 @@ const ContactSection = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-primary" />
-                    <span>advokat710@gmail.com</span>
+                    <span>info@mario-handwerker.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className="h-5 w-5 text-primary" />

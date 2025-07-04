@@ -39,7 +39,7 @@ const Contact = () => {
       project: formData.project,
       message: formData.message,
       contact_phone: "+49 15171847310",
-      contact_email: "advokat710@gmail.com",
+      contact_email: "info@mario-handwerker.com",
       contact_address: "Spital Str. 14, 74177 Bad Friedrichshall",
       timestamp: new Date().toISOString(),
       source: "Kontakt-Seite"
@@ -123,7 +123,7 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0 flex items-center justify-center text-center min-h-[60px]">
-                  <span className="text-lg">advokat710@gmail.com</span>
+                  <span className="text-lg">info@mario-handwerker.com</span>
                 </CardContent>
               </Card>
 

@@ -21,7 +21,7 @@ const Impressum = () => {
               <section>
                 <h2 className="text-2xl font-semibold mb-4">Angaben gemäß § 5 TMG</h2>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p><strong>Allaround-Handwerker</strong></p>
+                  <p><strong>Mario Blazevic</strong></p>
                   <p>Spital Str. 14</p>
                   <p>74177 Bad Friedrichshall</p>
                 </div>
@@ -31,7 +31,7 @@ const Impressum = () => {
                 <h2 className="text-2xl font-semibold mb-4">Kontakt</h2>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <p><strong>Telefon:</strong> +49 15171847310</p>
-                  <p><strong>E-Mail:</strong> advokat710@gmail.com</p>
+                  <p><strong>E-Mail:</strong> info@mario-handwerker.com</p>
                 </div>
               </section>
 
@@ -54,8 +54,8 @@ const Impressum = () => {
 
               <section>
                 <h2 className="text-2xl font-semibold mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p>Allaround-Handwerker</p>
+                 <div className="bg-white p-6 rounded-lg shadow-sm">
+                   <p>Mario Blazevic</p>
                   <p>Spital Str. 14</p>
                   <p>74177 Bad Friedrichshall</p>
                 </div>

@@ -31,8 +31,28 @@ const ContactSection = () => {
     e.preventDefault();
     setIsLoading(true);
     
+    const webhookData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      project: formData.project,
+      message: formData.message,
+      contact_phone: "+49 15171847310",
+      contact_email: "info@mario-handwerker.com",
+      contact_address: "Spital Str. 14, 74177 Bad Friedrichshall",
+      timestamp: new Date().toISOString(),
+      source: "Homepage Kontaktformular"
+    };
+
     try {
-      // Formular erfolgreich verarbeitet (kein Webhook)
+      const response = await fetch("https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(webhookData),
+      });
+
       toast({
         title: "Anfrage gesendet!",
         description: "Wir werden uns bald bei Ihnen melden.",
@@ -45,7 +65,7 @@ const ContactSection = () => {
         message: ""
       });
     } catch (error) {
-      console.error("Error processing form:", error);
+      console.error("Error sending webhook:", error);
       toast({
         title: "Fehler",
         description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",

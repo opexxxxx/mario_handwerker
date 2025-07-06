@@ -1,37 +1,59 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, ArrowRight, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const formSchema = z.object({
+  name: z.string()
+    .min(2, "Name muss mindestens 2 Zeichen lang sein")
+    .max(50, "Name darf maximal 50 Zeichen lang sein")
+    .regex(/^[a-zA-ZäöüÄÖÜß\s]+$/, "Name darf nur Buchstaben und Leerzeichen enthalten"),
+  email: z.string()
+    .min(1, "E-Mail ist erforderlich")
+    .regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Bitte geben Sie eine gültige E-Mail-Adresse ein"),
+  phone: z.string()
+    .optional()
+    .refine((val) => !val || /^[\d\s\-\+\(\)]+$/.test(val), "Telefonnummer darf nur Zahlen, Leerzeichen und Sonderzeichen enthalten"),
+  project: z.string().optional(),
+  message: z.string()
+    .min(10, "Nachricht muss mindestens 10 Zeichen lang sein")
+    .max(1000, "Nachricht darf maximal 1000 Zeichen lang sein"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    project: "",
-    message: ""
-  });
-  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      project: "",
+      message: "",
+    },
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const { isSubmitting } = form.formState;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    
+  const handleSubmit = async (values: FormValues) => {
     try {
       // Formular erfolgreich verarbeitet (kein Webhook)
       toast({
@@ -39,13 +61,7 @@ const Contact = () => {
         description: "Wir werden uns binnen 24 Stunden bei Ihnen melden.",
       });
       
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        project: "",
-        message: ""
-      });
+      form.reset();
     } catch (error) {
       console.error("Error processing form:", error);
       toast({
@@ -53,8 +69,6 @@ const Contact = () => {
         description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
         variant: "destructive",
       });
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -125,74 +139,90 @@ const Contact = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Name *</Label>
-                      <Input
-                        id="name"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
                         name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Ihr Name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Ihr Name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">E-Mail *</Label>
-                      <Input
-                        id="email"
+                      <FormField
+                        control={form.control}
                         name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="ihre@email.de"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>E-Mail *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="ihre@email.de" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="phone">Telefon</Label>
-                      <Input
-                        id="phone"
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
                         name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="Ihre Telefonnummer"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Telefon</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Ihre Telefonnummer" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    <div>
-                      <Label htmlFor="project">Projektart</Label>
-                      <Input
-                        id="project"
+                      <FormField
+                        control={form.control}
                         name="project"
-                        value={formData.project}
-                        onChange={handleInputChange}
-                        placeholder="z.B. Trockenbau, Maler"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Projektart</FormLabel>
+                            <FormControl>
+                              <Input placeholder="z.B. Trockenbau, Maler" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                  </div>
 
-                  <div>
-                    <Label htmlFor="message">Nachricht *</Label>
-                    <Textarea
-                      id="message"
+                    <FormField
+                      control={form.control}
                       name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Beschreiben Sie Ihr Projekt..."
-                      className="min-h-[120px]"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nachricht *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Beschreiben Sie Ihr Projekt..."
+                              className="min-h-[120px]"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
-                    {isLoading ? "Wird gesendet..." : "Anfrage senden"}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </form>
+                    <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                      {isSubmitting ? "Wird gesendet..." : "Anfrage senden"}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </div>

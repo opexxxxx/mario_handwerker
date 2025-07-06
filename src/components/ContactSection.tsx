@@ -54,7 +54,28 @@ const ContactSection = () => {
 
   const handleSubmit = async (values: FormValues) => {
     try {
-      // Formular erfolgreich verarbeitet (kein Webhook)
+      const webhookUrl = "https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj";
+      
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          phone: values.phone || "",
+          project: values.project || "",
+          message: values.message,
+          timestamp: new Date().toISOString(),
+          source: "homepage-contact"
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
       toast({
         title: "Anfrage gesendet!",
         description: "Wir werden uns bald bei Ihnen melden.",

@@ -45,29 +45,27 @@ const ContactSection = () => {
     };
 
     try {
-      const response = await fetch("https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(webhookData),
-      });
+      // Webhook deaktiviert
+      // const response = await fetch("https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(webhookData),
+      // });
 
-      if (response.ok) {
-        toast({
-          title: "Anfrage gesendet!",
-          description: "Wir werden uns bald bei Ihnen melden.",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          project: "",
-          message: ""
-        });
-      } else {
-        throw new Error("Webhook request failed");
-      }
+      // Simulate successful response
+      toast({
+        title: "Anfrage gesendet!",
+        description: "Wir werden uns bald bei Ihnen melden.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        project: "",
+        message: ""
+      });
     } catch (error) {
       console.error("Error sending webhook:", error);
       toast({

@@ -55,9 +55,7 @@ const Contact = () => {
 
   const handleSubmit = async (values: FormValues) => {
     try {
-      const webhookUrl = "https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj";
-      
-      const response = await fetch(webhookUrl, {
+      const response = await fetch(`https://umzfopwnhlxftnriaugq.supabase.co/functions/v1/submit-contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,13 +66,32 @@ const Contact = () => {
           phone: values.phone || "",
           project: values.project || "",
           message: values.message,
-          timestamp: new Date().toISOString(),
           source: "contact-page"
         }),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        if (response.status === 429) {
+          toast({
+            title: "Zu viele Anfragen",
+            description: result.error || "Bitte warten Sie 15 Minuten bevor Sie erneut eine Anfrage senden.",
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        if (result.details && Array.isArray(result.details)) {
+          toast({
+            title: "Validierungsfehler",
+            description: result.details.join(", "),
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        throw new Error(result.error || "Network response was not ok");
       }
 
       toast({

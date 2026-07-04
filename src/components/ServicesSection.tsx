@@ -1,83 +1,40 @@
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, Wrench, Hammer, Palette, Zap, Droplets, Truck, Building, Brush } from "lucide-react";
+import { Building, Brush, Droplets, Hammer, Home, Palette, Truck, Wrench, Zap } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const ServicesSection = () => {
   const services = [
-    {
-      icon: Home,
-      title: "Trockenbau",
-      description: "Professionelle Trockenbauarbeiten für Wohn- und Gewerberäume",
-      gradient: "bg-gradient-to-tl from-amber-400 to-orange-500"
-    },
-    {
-      icon: Building,
-      title: "Stuckarbeiten",
-      description: "Kreative Stuckarbeiten und dekorative Wandgestaltung",
-      gradient: "bg-gradient-to-tl from-stone-400 to-slate-600"
-    },
-    {
-      icon: Palette,
-      title: "Malerarbeiten",
-      description: "Hochwertige Malerarbeiten innen und außen",
-      gradient: "bg-gradient-to-tl from-blue-400 to-purple-500"
-    },
-    {
-      icon: Brush,
-      title: "Fliesenleger",
-      description: "Fachgerechte Verlegung von Fliesen in Bad und Küche",
-      gradient: "bg-gradient-to-tl from-teal-400 to-cyan-500"
-    },
-    {
-      icon: Hammer,
-      title: "Fassade",
-      description: "Fassadensanierung und -gestaltung für Ihr Gebäude",
-      gradient: "bg-gradient-to-tl from-gray-400 to-gray-600"
-    },
-    {
-      icon: Truck,
-      title: "Transport",
-      description: "Zuverlässige Transportdienstleistungen und Aufräumarbeiten für Ihr Projekt",
-      gradient: "bg-gradient-to-tl from-green-400 to-emerald-500"
-    },
-    {
-      icon: Wrench,
-      title: "Innenausbau",
-      description: "Kompletter Innenausbau nach Ihren Wünschen",
-      gradient: "bg-gradient-to-tl from-rose-400 to-pink-500"
-    },
-    {
-      icon: Zap,
-      title: "Strom",
-      description: "Elektroinstallationen und elektrische Arbeiten",
-      gradient: "bg-gradient-to-tl from-yellow-400 to-orange-400"
-    },
-    {
-      icon: Droplets,
-      title: "Wasser",
-      description: "Sanitärinstallationen und Wasseranschlüsse",
-      gradient: "bg-gradient-to-tl from-blue-400 to-blue-600"
-    }
+    { icon: Home, title: "Trockenbau", description: "Waende, Decken und Raumaufteilung sauber geplant und umgesetzt." },
+    { icon: Building, title: "Stuckarbeiten", description: "Dekorative Details fuer Decken, Waende und Fassaden." },
+    { icon: Palette, title: "Malerarbeiten", description: "Innen und aussen mit ruhiger Vorbereitung und sauberem Abschluss." },
+    { icon: Brush, title: "Fliesenleger", description: "Badezimmer, Kueche und Bodenflaechen fachgerecht verlegt." },
+    { icon: Hammer, title: "Fassade", description: "Sanierung, Ausbesserung und Gestaltung fuer einen starken Eindruck." },
+    { icon: Truck, title: "Transport", description: "Material, Entsorgung und Aufraeumarbeiten passend zum Projekt." },
+    { icon: Wrench, title: "Innenausbau", description: "Kompletter Ausbau mit Blick fuer Funktion und Oberflaeche." },
+    { icon: Zap, title: "Strom", description: "Koordinierte Elektroarbeiten im Rahmen Ihrer Renovierung." },
+    { icon: Droplets, title: "Wasser", description: "Sanitaeranschluesse und Wasserarbeiten fuer Bad und Kueche." },
   ];
 
   return (
-    <section className="py-16 bg-card">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Unsere Leistungen</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+    <section id="leistungen" className="bg-[#ebe6da] px-4 py-20 md:px-6">
+      <div className="mx-auto max-w-7xl">
+        <ScrollReveal className="mb-10 text-center">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#7d755f]">Unsere Leistungen</p>
+            <h2 className="text-4xl font-semibold leading-tight text-[#111111] md:whitespace-nowrap md:text-5xl lg:text-6xl">
+              Alles, was Ihr Zuhause weiterbringt.
+            </h2>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <Card key={index} className="hover:shadow-lg transition-all duration-300 hover-scale h-full overflow-hidden">
-              <div className={`h-2 w-full ${service.gradient}`}></div>
-              <CardHeader>
-                <service.icon className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  {service.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <ScrollReveal key={service.title} className="h-full" delay={(index % 3) * 80}>
+              <article className="group min-h-[210px] rounded-[22px] border border-white/55 bg-white/54 p-6 shadow-[0_12px_36px_rgba(58,52,38,0.08)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white/75">
+                <service.icon className="mb-8 h-9 w-9 text-[#1c1a16]" />
+                <h3 className="mb-3 text-xl font-semibold text-[#171511]">{service.title}</h3>
+                <p className="text-sm leading-relaxed text-[#676052]">{service.description}</p>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>

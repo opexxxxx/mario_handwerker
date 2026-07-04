@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import ScrollReveal from "@/components/ScrollReveal";
 import {
   Form,
   FormControl,
@@ -112,16 +113,16 @@ const ContactSection = () => {
     <section id="contact" className="py-16 bg-gradient-to-br from-primary/5 to-secondary/10">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Kostenloses Angebot anfordern</h2>
             <p className="text-xl text-muted-foreground">
               Lassen Sie uns Ihr Projekt gemeinsam planen
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Contact Info */}
-            <div className="space-y-6 h-full flex flex-col">
+            <ScrollReveal className="space-y-6 h-full flex flex-col">
               <Card className="flex-grow">
                 <CardHeader>
                   <CardTitle className="flex items-center">
@@ -170,105 +171,107 @@ const ContactSection = () => {
                   </ul>
                 </CardContent>
               </Card>
-            </div>
+            </ScrollReveal>
 
             {/* Contact Form */}
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle>Anfrage senden</CardTitle>
-                <CardDescription>
-                  Füllen Sie das Formular aus und wir melden uns binnen 24 Stunden bei Ihnen
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 h-full flex flex-col">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Name *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Ihr Name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>E-Mail *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="ihre@email.de" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Telefon</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Ihre Telefonnummer" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="project"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Projektart</FormLabel>
-                            <FormControl>
-                              <Input placeholder="z.B. Wohnungsbau, Büro" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+            <ScrollReveal delay={120}>
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Anfrage senden</CardTitle>
+                  <CardDescription>
+                    Füllen Sie das Formular aus und wir melden uns binnen 24 Stunden bei Ihnen
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 h-full flex flex-col">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Name *</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Ihr Name" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>E-Mail *</FormLabel>
+                              <FormControl>
+                                <Input placeholder="ihre@email.de" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Telefon</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Ihre Telefonnummer" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="project"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Projektart</FormLabel>
+                              <FormControl>
+                                <Input placeholder="z.B. Wohnungsbau, Büro" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                    <div className="flex-grow">
-                      <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Nachricht *</FormLabel>
-                            <FormControl>
-                              <Textarea
-                                placeholder="Beschreiben Sie Ihr Projekt..."
-                                className="min-h-[120px] resize-none"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                      <div className="flex-grow">
+                        <FormField
+                          control={form.control}
+                          name="message"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Nachricht *</FormLabel>
+                              <FormControl>
+                                <Textarea
+                                  placeholder="Beschreiben Sie Ihr Projekt..."
+                                  className="min-h-[120px] resize-none"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                    <Button type="submit" className="w-full mt-auto" size="lg" disabled={isSubmitting}>
-                      {isSubmitting ? "Wird gesendet..." : "Anfrage senden"}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
+                      <Button type="submit" className="w-full mt-auto" size="lg" disabled={isSubmitting}>
+                        {isSubmitting ? "Wird gesendet..." : "Anfrage senden"}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </form>
+                  </Form>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
           </div>
         </div>
       </div>

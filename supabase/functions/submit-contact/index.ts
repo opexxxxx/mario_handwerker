@@ -5,11 +5,23 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const CONTACT_TO_EMAIL = Deno.env.get("CONTACT_TO_EMAIL") || "info@mario-handwerker.com";
+const CONTACT_FROM_EMAIL = Deno.env.get("CONTACT_FROM_EMAIL") || "Mario Handwerker <onboarding@resend.dev>";
+
 // In-memory rate limiting storage (in production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per 15 minutes per IP
+
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 // Validation schema
 const validateContactForm = (data: any) => {
@@ -121,32 +133,68 @@ serve(async (req) => {
       });
     }
 
-    // Prepare data for webhook
-    const webhookData = {
+    if (!RESEND_API_KEY) {
+      console.error('Missing RESEND_API_KEY environment variable');
+      throw new Error('Email service is not configured');
+    }
+
+    const contactData = {
       name: requestData.name.trim(),
       email: requestData.email.trim().toLowerCase(),
       phone: requestData.phone?.trim() || "",
-      project: requestData.project?.trim() || "",
       message: requestData.message.trim(),
       timestamp: new Date().toISOString(),
       source: requestData.source || "secure-form",
       clientIP: clientIP
     };
 
-    // Send to original webhook
-    const webhookUrl = "https://hook.eu2.make.com/majc7qq7wfb29o02ifn3g7rng0bsygaj";
-    
-    const webhookResponse = await fetch(webhookUrl, {
+    const emailHtml = `
+      <h2>Neue Anfrage über mario-handwerker.com</h2>
+      <p><strong>Name:</strong> ${escapeHtml(contactData.name)}</p>
+      <p><strong>E-Mail:</strong> ${escapeHtml(contactData.email)}</p>
+      <p><strong>Telefon:</strong> ${escapeHtml(contactData.phone || "Nicht angegeben")}</p>
+      <p><strong>Nachricht:</strong></p>
+      <p>${escapeHtml(contactData.message).replace(/\n/g, "<br>")}</p>
+      <hr>
+      <p><small>Quelle: ${escapeHtml(contactData.source)}</small></p>
+      <p><small>Zeitpunkt: ${escapeHtml(contactData.timestamp)}</small></p>
+      <p><small>IP: ${escapeHtml(contactData.clientIP)}</small></p>
+    `;
+
+    const emailText = [
+      "Neue Anfrage über mario-handwerker.com",
+      "",
+      `Name: ${contactData.name}`,
+      `E-Mail: ${contactData.email}`,
+      `Telefon: ${contactData.phone || "Nicht angegeben"}`,
+      "",
+      "Nachricht:",
+      contactData.message,
+      "",
+      `Quelle: ${contactData.source}`,
+      `Zeitpunkt: ${contactData.timestamp}`,
+      `IP: ${contactData.clientIP}`,
+    ].join("\n");
+
+    const emailResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
       },
-      body: JSON.stringify(webhookData),
+      body: JSON.stringify({
+        from: CONTACT_FROM_EMAIL,
+        to: [CONTACT_TO_EMAIL],
+        reply_to: contactData.email,
+        subject: `Neue Anfrage von ${contactData.name}`,
+        html: emailHtml,
+        text: emailText,
+      }),
     });
 
-    if (!webhookResponse.ok) {
-      console.error('Webhook failed:', webhookResponse.status, await webhookResponse.text());
-      throw new Error(`Webhook failed with status ${webhookResponse.status}`);
+    if (!emailResponse.ok) {
+      console.error('Email delivery failed:', emailResponse.status, await emailResponse.text());
+      throw new Error(`Email delivery failed with status ${emailResponse.status}`);
     }
 
     console.log('Form submitted successfully for:', requestData.email);
